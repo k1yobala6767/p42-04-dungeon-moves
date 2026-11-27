@@ -15,7 +15,7 @@ public static class Actions
         int newX = player.X + dx;
         int newY = player.Y + dy;
 
-        if (game.Map.IsWall(player.X, player.Y))
+        if (game.Map.IsWall(newX, newY))
             return "Там стена.";
 
         Monster monster = game.FindMonsterAt(newX, newY);
@@ -60,8 +60,7 @@ public static class Actions
     public static string UseItem(Game game, int number)
     {
         Player player = game.Player;
-        int index = number;
-
+        int index = number - 1;
         Item item = player.Bag.Get(index);
         if (item == null)
             return "В сумке нет предмета с номером " + number + ".";
